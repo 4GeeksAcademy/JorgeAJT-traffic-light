@@ -1,45 +1,46 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 const TrafficLight = () => {
-    const [redLight, setRedLight] = useState()
-    const [amberLight, setAmberLight] = useState("darkorange")
-    const [greenLight, setGreenLight] = useState("darkgreen")
+    const [redLight, setRedLight] = useState("off")
+    const [amberLight, setAmberLight] = useState("off")
+    const [greenLight, setGreenLight] = useState("off")
 
     function switchRed() {
-        if(redLight == "darkred"){
-            setRedLight("red")
-            setAmberLight("darkorange")
-            setGreenLight("darkgreen")
+        if(redLight == "off"){
+            setRedLight("lit")
+            setAmberLight("off")
+            setGreenLight("off")
         } else {
-            setRedLight("darkred")
+            setRedLight("off")
         }
     }
     function switchAmber() {
-        if(amberLight == "darkorange"){
-            setAmberLight("orange")
-            setRedLight("darkred")
-            setGreenLight("darkgreen")
+        if(amberLight == "off"){
+            setAmberLight("lit")
+            setRedLight("off")
+            setGreenLight("off")
         } else {
-            setAmberLight("darkorange")
+            setAmberLight("off")
         }
     }
     function switchGreen() {
-        if(greenLight == "darkgreen"){
-            setGreenLight("green")
-            setRedLight("darkred")
-            setAmberLight("darkorange")
+        if(greenLight == "off"){
+            setGreenLight("lit")
+            setRedLight("off")
+            setAmberLight("off")
         } else {
-            setGreenLight("darkgreen")
+            setGreenLight("off")
         }
     }
 
     return(
-        <div className="card">
-        <div className="d-flex align-items-center flex-column mt-5">
-            <button onClick={switchRed} className={redLight}></button>
-            <button onClick={switchAmber} className={amberLight}></button>
-            <button onClick={switchGreen} className={greenLight}></button>
-        </div>
+        <div className="d-flex justify-content-center">
+            <div className="palo"></div>
+            <div className="card d-flex align-items-center flex-column">
+                    <button onClick={switchRed} className={`mb-3 red ${redLight == "off" ? "off" : "lit"}`}></button>
+                    <button onClick={switchAmber} className={`mb-3 amber ${amberLight == "off" ? "off" : "lit"}`}></button>
+                    <button onClick={switchGreen} className={`mb-3 green ${greenLight == "off" ? "off" : "lit"}`}></button>
+            </div>
         </div>
     )
 }
